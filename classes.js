@@ -23,23 +23,46 @@ FireType
      - fireAttack which should return the string `${name} just blew a giant fireball.'
 */
 
+class Pokemon {
+  constructor(props) {
+    this.name = props.name;
+    this.height = props.height;
+    this.weight = props.weight;
+    this.level = props.level;
+    this.health = 50;
+  }
+  sleep() {
+    this.health = 100;
+  }
+  levelUp() {
+    this.level++;
+  }
+}
 
-
-
+class FireType extends Pokemon() {
+  constructor(fireAttrs) {
+    super(fireAttrs);
+    this.property = "fire";
+    this.nickname = fireAttrs.nickname;
+    this.weakness = ["water", "ground", "rock"];
+  }
+  fireAttack() {
+    return `${this.name} just blew a giant fireball`;
+  }
+}
 
 /* Uncomment below to test your code */
 
-// const charmander = new FireType({
-//     name: "Charmander",
-//     height: "23in",
-//     weight: "18lbs",
-//     level: 7
-// })
+const charmander = new FireType({
+  name: "Charmander",
+  height: "23in",
+  weight: "18lbs",
+  level: 7,
+});
 
-// console.log(charmander.fireAttack()) // Hello my name is Severus charmander, I am from Hogwarts
-// console.log(charmander.health) // 50
-// console.log(charmander.level) // 7
-// console.log(charmander.sleep()) 
-// console.log(charmander.health) // 100
-// console.log(charmander.weaknesses) // ['water', 'ground', 'rock']
-
+console.log(charmander.fireAttack()); // Hello my name is Severus charmander, I am from Hogwarts
+console.log(charmander.health); // 50
+console.log(charmander.level); // 7
+console.log(charmander.sleep());
+console.log(charmander.health); // 100
+console.log(charmander.weaknesses); // ['water', 'ground', 'rock']
